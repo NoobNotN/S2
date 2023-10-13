@@ -600,13 +600,11 @@ export class PivotDataSet extends BaseDataSet {
             ) {
               const arrTypeValue = dimValue.split(ID_SEPARATOR);
               const currentKey = arrTypeValue[i];
-              if (currentKey !== 'undefined') {
-                resKeys.push(currentKey);
-              }
+              resKeys.push(currentKey);
             }
           }
           const queryList = uniq(resKeys).map((v) => {
-            return { ...query, [key]: v };
+            return { ...query, [key]: v === 'undefined' ? undefined : v };
           });
           res = concat(res, queryList);
         }
