@@ -719,7 +719,9 @@ export abstract class SpreadSheet extends EE {
         return null;
       }
 
-      const ctx = this.getCanvasElement()?.getContext('2d');
+      const ctx =
+        this.getCanvasElement()?.getContext('2d') ||
+        document.createElement('canvas').getContext('2d');
       const { fontSize, fontFamily, fontWeight, fontStyle, fontVariant } =
         font as CSSStyleDeclaration;
 
